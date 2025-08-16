@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>Guardianes de Chillihuay</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Guardianes de Chillihuay</h1>
+    <nav>
+      <button id="btnMuseum" class="btn">Museo</button>
+      <button id="btnHow" class="btn">Cómo jugar</button>
+      <button id="btnReset" class="btn">Reiniciar</button>
+    </nav>
+  </header>
+
+  <main class="game-wrap">
+    <canvas id="game" width="960" height="540" aria-label="Juego educativo"></canvas>
+    <div class="touch-controls" aria-hidden="true">
+      <button id="btnLeft" class="pad">◀</button>
+      <button id="btnJump" class="pad jump">⤴</button>
+      <button id="btnRight" class="pad">▶</button>
+    </div>
+  </main>
+
+  <!-- Simple modal elements -->
+  <div id="overlay" class="overlay hidden" role="dialog" aria-hidden="true">
+    <div class="card">
+      <h2 id="overlayTitle">Guardianes de Chillihuay</h2>
+      <p id="overlayText">Carga el juego y toca comenzar. Usa controles táctiles o teclado.</p>
+      <button id="overlayBtn" class="btn">Comenzar</button>
+    </div>
+  </div>
+
+  <script>
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('service-worker.js').catch(()=>{console.log('SW reg failed');});
+    }
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
